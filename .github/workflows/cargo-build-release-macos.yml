@@ -12,3 +12,6 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: aarch64-apple-darwin
+
+      - name: Build release (aarch64)
+        run: cargo build --release --locked --target aarch64-apple-darwin
