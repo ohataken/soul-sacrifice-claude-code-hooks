@@ -1,3 +1,4 @@
+use chrono::Local;
 use serde::Deserialize;
 
 #[derive(Deserialize)]
@@ -31,6 +32,8 @@ impl Frontmatter {
 }
 
 pub fn run() {
+    let now = Local::now();
+
     let payload: SessionEnd =
         serde_json::from_reader(std::io::stdin()).expect("failed to parse JSON from stdin");
 
