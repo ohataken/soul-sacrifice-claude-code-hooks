@@ -51,3 +51,22 @@ brew install soul-sacrifice-claude-code-hooks
   }
 }
 ```
+
+### Stop
+
+```json
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "SOUL_SACRIFICE_SESSIONS_DIR=/path/to/vault/sessions soul-sacrifice-claude-code-hooks stop '%Y-%m-%dT%H%M%S'"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
