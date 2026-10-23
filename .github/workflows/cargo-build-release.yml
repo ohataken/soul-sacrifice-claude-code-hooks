@@ -23,3 +23,6 @@ jobs:
 
       - name: Package (aarch64)
         run: tar -czf soul-sacrifice-claude-code-hooks-aarch64-unknown-linux-gnu.tar.gz -C target/aarch64-unknown-linux-gnu/release soul-sacrifice-claude-code-hooks
+
+      - name: SHA256 (aarch64)
+        run: shasum -a 256 soul-sacrifice-claude-code-hooks-aarch64-unknown-linux-gnu.tar.gz
