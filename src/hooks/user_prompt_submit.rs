@@ -23,12 +23,13 @@ struct Frontmatter {
 impl Frontmatter {
     fn render(&self) -> String {
         format!(
-            "---\nsession_id: {}\ntranscript_path: {}\ncwd: {}\nhook_event_name: {}\nprompt_id: {}\n---\n",
+            "---\nsession_id: {}\ntranscript_path: {}\ncwd: {}\nhook_event_name: {}\nprompt_id: {}\ntimestamp: {}\n---\n",
             self.session_id,
             serde_json::json!(self.transcript_path),
             serde_json::json!(self.cwd),
             self.hook_event_name,
             self.prompt_id,
+            self.timestamp.format("%Y-%m-%dT%H:%M:%S"),
         )
     }
 }
@@ -45,6 +46,7 @@ pub fn run() {
         cwd: payload.cwd,
         hook_event_name: payload.hook_event_name,
         prompt_id: payload.prompt_id,
+        timestamp: now,
     };
 
     print!("{}", frontmatter.render());
