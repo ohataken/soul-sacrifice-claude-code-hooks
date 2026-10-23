@@ -65,6 +65,10 @@ pub fn run() {
         timestamp: now,
     };
 
+    let base = Base {
+        session_id: frontmatter.session_id.clone(),
+    };
+
     note::create_session_dir(&frontmatter.session_id);
 
     note::write(&now, &frontmatter.session_id, frontmatter.render());
