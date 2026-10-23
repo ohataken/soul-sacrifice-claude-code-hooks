@@ -1,4 +1,5 @@
 use chrono::{DateTime, Local};
+use std::io::Write;
 use std::path::PathBuf;
 
 pub fn write(now: &DateTime<Local>, session_id: &str, content: String) {
@@ -27,7 +28,9 @@ pub fn create_base(session_id: &str, content: String) {
         .create_new(true)
         .open(&base_path)
     {
-        Ok(_file) => {}
+        Ok(mut file) => file
+            .write_all(content.as_bytes())
+            .expect("failed to write base"),
         Err(error) => panic!("failed to create base: {error}"),
     }
 }
