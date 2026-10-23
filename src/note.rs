@@ -21,6 +21,15 @@ pub fn create_session_dir(session_id: &str) {
 
 pub fn create_base(session_id: &str, content: String) {
     let base_path = session_dir(session_id).join(format!("{session_id}.base"));
+
+    match std::fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(&base_path)
+    {
+        Ok(_file) => {}
+        Err(error) => panic!("failed to create base: {error}"),
+    }
 }
 
 fn sessions_path() -> PathBuf {
