@@ -19,6 +19,10 @@ pub fn create_session_dir(session_id: &str) {
     }
 }
 
+pub fn create_base(session_id: &str, content: String) {
+    let base_path = session_dir(session_id).join(format!("{session_id}.base"));
+}
+
 fn sessions_path() -> PathBuf {
     let sessions_path = std::env::var("SOUL_SACRIFICE_SESSIONS_DIR")
         .expect("SOUL_SACRIFICE_SESSIONS_DIR is not set");
