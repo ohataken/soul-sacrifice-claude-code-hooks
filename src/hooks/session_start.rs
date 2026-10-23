@@ -71,5 +71,7 @@ pub fn run() {
 
     note::create_session_dir(&frontmatter.session_id);
 
+    note::create_base(&frontmatter.session_id, base.render());
+
     note::write(&now, &frontmatter.session_id, frontmatter.render());
 }
