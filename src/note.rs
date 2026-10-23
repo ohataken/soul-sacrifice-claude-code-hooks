@@ -6,3 +6,9 @@ fn sessions_path() -> PathBuf {
 
     PathBuf::from(sessions_path)
 }
+
+fn name_format() -> String {
+    std::env::args()
+        .nth(2)
+        .unwrap_or_else(|| "%Y%m%d%H%M".to_string())
+}
