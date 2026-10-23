@@ -3,6 +3,13 @@ class SoulSacrificeClaudeCodeHooks < Formula
   homepage "https://github.com/ohataken/soul-sacrifice-claude-code-hooks"
   version "0.0.1"
 
+  on_macos do
+    on_arm do
+      url "https://github.com/ohataken/soul-sacrifice-claude-code-hooks/releases/download/v#{version}/soul-sacrifice-claude-code-hooks-aarch64-apple-darwin.tar.gz"
+      sha256 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    end
+  end
+
   def install
     bin.install "soul-sacrifice-claude-code-hooks"
   end
