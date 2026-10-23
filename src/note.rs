@@ -12,3 +12,7 @@ fn name_format() -> String {
         .nth(2)
         .unwrap_or_else(|| "%Y%m%d%H%M".to_string())
 }
+
+fn session_dir(session_id: &str) -> PathBuf {
+    sessions_path().join(session_id)
+}
