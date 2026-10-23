@@ -10,4 +10,5 @@ struct Stop {
     last_assistant_message: String,
 }
 
-pub fn run() {}
+pub fn run() {
+}
