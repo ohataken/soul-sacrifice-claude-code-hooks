@@ -11,6 +11,14 @@ pub fn write(now: &DateTime<Local>, session_id: &str, content: String) {
     std::fs::write(&note_path, content).expect("failed to write note");
 }
 
+pub fn create_session_dir(session_id: &str) {
+    if let Err(error) = std::fs::create_dir(session_dir(session_id))
+        && error.kind() != std::io::ErrorKind::AlreadyExists
+    {
+        panic!("failed to create session directory: {error}");
+    }
+}
+
 fn sessions_path() -> PathBuf {
     let sessions_path = std::env::var("SOUL_SACRIFICE_SESSIONS_DIR")
         .expect("SOUL_SACRIFICE_SESSIONS_DIR is not set");
