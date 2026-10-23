@@ -31,6 +31,7 @@ pub fn create_base(session_id: &str, content: String) {
         Ok(mut file) => file
             .write_all(content.as_bytes())
             .expect("failed to write base"),
+        Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => {}
         Err(error) => panic!("failed to create base: {error}"),
     }
 }
