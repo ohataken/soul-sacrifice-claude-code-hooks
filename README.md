@@ -32,3 +32,22 @@ brew install soul-sacrifice-claude-code-hooks
   }
 }
 ```
+
+### UserPromptSubmit
+
+```json
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "SOUL_SACRIFICE_SESSIONS_DIR=/path/to/vault/sessions soul-sacrifice-claude-code-hooks user_prompt_submit '%Y-%m-%dT%H%M%S'"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
