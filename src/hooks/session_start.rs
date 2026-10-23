@@ -42,6 +42,9 @@ impl Base {
     fn render(&self) -> String {
         let mut base = String::new();
 
+        base += "filters:\n";
+        base += "  and:\n";
+        base += &format!("    - 'session_id == \"{}\"'\n", self.session_id);
         base += "views:\n";
         base += "  - type: table\n";
         base += "    name: Session\n";
