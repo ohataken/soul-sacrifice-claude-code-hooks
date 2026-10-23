@@ -1,4 +1,4 @@
-use chrono::Local;
+use chrono::{DateTime, Local};
 use serde::Deserialize;
 
 #[derive(Deserialize)]
@@ -16,6 +16,7 @@ struct Frontmatter {
     cwd: String,
     hook_event_name: String,
     reason: String,
+    timestamp: DateTime<Local>,
 }
 
 impl Frontmatter {
