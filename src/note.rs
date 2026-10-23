@@ -1,4 +1,15 @@
+use chrono::{DateTime, Local};
 use std::path::PathBuf;
+
+pub fn write(now: &DateTime<Local>, session_id: &str, content: String) {
+    let session_dir = session_dir(session_id);
+    let name_format = name_format();
+
+    let file_name = format!("{}.md", now.format(&name_format));
+    let note_path = session_dir.join(file_name);
+
+    std::fs::write(&note_path, content).expect("failed to write note");
+}
 
 fn sessions_path() -> PathBuf {
     let sessions_path = std::env::var("SOUL_SACRIFICE_SESSIONS_DIR")
