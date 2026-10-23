@@ -34,6 +34,10 @@ impl Frontmatter {
     }
 }
 
+struct Base {
+    session_id: String,
+}
+
 pub fn run() {
     let now = Local::now();
 
