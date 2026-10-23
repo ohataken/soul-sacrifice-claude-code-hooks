@@ -10,4 +10,6 @@ struct SessionStart {
 }
 
 pub fn run() {
+    let _payload: SessionStart =
+        serde_json::from_reader(std::io::stdin()).expect("failed to parse JSON from stdin");
 }
