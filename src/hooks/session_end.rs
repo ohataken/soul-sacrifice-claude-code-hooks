@@ -9,4 +9,5 @@ struct SessionEnd {
     reason: String,
 }
 
-pub fn run() {}
+pub fn run() {
+}
