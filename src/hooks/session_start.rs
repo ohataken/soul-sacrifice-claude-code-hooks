@@ -17,6 +17,19 @@ struct Frontmatter {
     source: String,
 }
 
+impl Frontmatter {
+    fn render(&self) -> String {
+        format!(
+            "---\nsession_id: {}\ntranscript_path: {}\ncwd: {}\nhook_event_name: {}\nsource: {}\n---\n",
+            self.session_id,
+            serde_json::json!(self.transcript_path),
+            serde_json::json!(self.cwd),
+            self.hook_event_name,
+            self.source,
+        )
+    }
+}
+
 pub fn run() {
     let payload: SessionStart =
         serde_json::from_reader(std::io::stdin()).expect("failed to parse JSON from stdin");
@@ -28,4 +41,6 @@ pub fn run() {
         hook_event_name: payload.hook_event_name,
         source: payload.source,
     };
+
+    print!("{}", frontmatter.render());
 }
