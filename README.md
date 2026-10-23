@@ -11,3 +11,24 @@ brew tap ohataken/soul-sacrifice-claude-code-hooks https://github.com/ohataken/s
 brew trust --formula ohataken/soul-sacrifice-claude-code-hooks/soul-sacrifice-claude-code-hooks
 brew install soul-sacrifice-claude-code-hooks
 ```
+
+## hooks
+
+### SessionStart
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "SOUL_SACRIFICE_SESSIONS_DIR=/path/to/vault/sessions soul-sacrifice-claude-code-hooks session_start '%Y-%m-%dT%H%M%S'"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
