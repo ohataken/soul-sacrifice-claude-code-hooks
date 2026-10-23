@@ -26,3 +26,9 @@ jobs:
 
       - name: SHA256 (aarch64)
         run: shasum -a 256 soul-sacrifice-claude-code-hooks-aarch64-unknown-linux-gnu.tar.gz
+
+      - name: Upload artifact (aarch64)
+        uses: actions/upload-artifact@v6
+        with:
+          name: soul-sacrifice-claude-code-hooks-aarch64-unknown-linux-gnu
+          path: soul-sacrifice-claude-code-hooks-aarch64-unknown-linux-gnu.tar.gz
