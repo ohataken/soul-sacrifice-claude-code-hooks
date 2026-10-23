@@ -50,5 +50,13 @@ pub fn run() {
         timestamp: now,
     };
 
-    note::write(&now, &frontmatter.session_id, frontmatter.render());
+    note::write(
+        &now,
+        &frontmatter.session_id,
+        format!(
+            "{}\n{}\n",
+            frontmatter.render(),
+            payload.last_assistant_message
+        ),
+    );
 }
