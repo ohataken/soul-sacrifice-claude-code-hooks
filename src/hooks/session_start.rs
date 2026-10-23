@@ -38,6 +38,18 @@ struct Base {
     session_id: String,
 }
 
+impl Base {
+    fn render(&self) -> String {
+        let mut base = String::new();
+
+        base += "views:\n";
+        base += "  - type: table\n";
+        base += "    name: Session\n";
+
+        base
+    }
+}
+
 pub fn run() {
     let now = Local::now();
 
