@@ -1,5 +1,9 @@
 fn main() {
     let subcommand = subcommand();
+
+    match subcommand.as_str() {
+        _ => panic!("unknown subcommand: {subcommand}"),
+    }
 }
 
 fn subcommand() -> String {
