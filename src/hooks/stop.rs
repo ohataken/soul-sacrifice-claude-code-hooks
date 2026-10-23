@@ -11,4 +11,6 @@ struct Stop {
 }
 
 pub fn run() {
+    let _payload: Stop =
+        serde_json::from_reader(std::io::stdin()).expect("failed to parse JSON from stdin");
 }
