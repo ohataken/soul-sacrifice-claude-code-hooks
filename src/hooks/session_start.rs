@@ -1,3 +1,4 @@
+use crate::note;
 use chrono::{DateTime, Local};
 use serde::Deserialize;
 
@@ -47,6 +48,8 @@ pub fn run() {
         source: payload.source,
         timestamp: now,
     };
+
+    note::create_session_dir(&frontmatter.session_id);
 
     print!("{}", frontmatter.render());
 }
