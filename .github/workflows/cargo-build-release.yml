@@ -1,0 +1,34 @@
+name: cargo-build-release
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-unknown-linux-gnu
+
+      - name: Build release (aarch64)
+        run: cargo build --release --locked --target aarch64-unknown-linux-gnu
+
+      - name: Package (aarch64)
+        run: tar -czf soul-sacrifice-claude-code-hooks-aarch64-unknown-linux-gnu.tar.gz -C target/aarch64-unknown-linux-gnu/release soul-sacrifice-claude-code-hooks
+
+      - name: SHA256 (aarch64)
+        run: shasum -a 256 soul-sacrifice-claude-code-hooks-aarch64-unknown-linux-gnu.tar.gz
+
+      - name: Upload artifact (aarch64)
+        uses: actions/upload-artifact@v6
+        with:
+          name: soul-sacrifice-claude-code-hooks-aarch64-unknown-linux-gnu
+          path: soul-sacrifice-claude-code-hooks-aarch64-unknown-linux-gnu.tar.gz
