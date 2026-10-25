@@ -21,6 +21,7 @@ brew install soul-sacrifice-claude-code-hooks
   "hooks": {
     "SessionStart": [
       {
+        "matcher": "startup",
         "hooks": [
           {
             "type": "command",
