@@ -51,5 +51,5 @@ pub fn run() {
 
     note::create_session_dir(&frontmatter.session_id);
 
-    print!("{}", frontmatter.render());
+    note::write(&now, &frontmatter.session_id, frontmatter.render());
 }
