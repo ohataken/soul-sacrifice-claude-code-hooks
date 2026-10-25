@@ -9,7 +9,7 @@ class SoulSacrificeClaudeCodeHooks < Formula
   on_macos do
     on_arm do
       url "https://github.com/ohataken/soul-sacrifice-claude-code-hooks/releases/download/v#{version}/soul-sacrifice-claude-code-hooks-aarch64-apple-darwin.tar.gz"
-      sha256 "a6ffe4eb904fc1ee0ed74638835d4b565b25d5f401a5b383ca9e310e756648a2"
+      sha256 "2a93b5316ae872e18ea9362011d078b1313d342c62ea84a2fe806309b4305bbb"
     end
   end
 
