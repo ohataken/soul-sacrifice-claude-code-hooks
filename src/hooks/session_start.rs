@@ -34,6 +34,22 @@ impl Frontmatter {
     }
 }
 
+struct Base {
+    session_id: String,
+}
+
+impl Base {
+    fn render(&self) -> String {
+        let mut base = String::new();
+
+        base += "views:\n";
+        base += "  - type: table\n";
+        base += "    name: Session\n";
+
+        base
+    }
+}
+
 pub fn run() {
     let now = Local::now();
 
@@ -49,7 +65,13 @@ pub fn run() {
         timestamp: now,
     };
 
+    let base = Base {
+        session_id: frontmatter.session_id.clone(),
+    };
+
     note::create_session_dir(&frontmatter.session_id);
+
+    note::create_base(&frontmatter.session_id, base.render());
 
     note::write(&now, &frontmatter.session_id, frontmatter.render());
 }

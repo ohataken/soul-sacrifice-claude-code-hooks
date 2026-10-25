@@ -1,4 +1,5 @@
 use chrono::{DateTime, Local};
+use std::io::Write;
 use std::path::PathBuf;
 
 pub fn write(now: &DateTime<Local>, session_id: &str, content: String) {
@@ -16,6 +17,22 @@ pub fn create_session_dir(session_id: &str) {
         && error.kind() != std::io::ErrorKind::AlreadyExists
     {
         panic!("failed to create session directory: {error}");
+    }
+}
+
+pub fn create_base(session_id: &str, content: String) {
+    let base_path = session_dir(session_id).join(format!("{session_id}.base"));
+
+    match std::fs::OpenOptions::new()
+        .write(true)
+        .create_new(true)
+        .open(&base_path)
+    {
+        Ok(mut file) => file
+            .write_all(content.as_bytes())
+            .expect("failed to write base"),
+        Err(error) if error.kind() == std::io::ErrorKind::AlreadyExists => {}
+        Err(error) => panic!("failed to create base: {error}"),
     }
 }
 
