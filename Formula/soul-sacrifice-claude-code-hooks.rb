@@ -1,7 +1,7 @@
 class SoulSacrificeClaudeCodeHooks < Formula
   desc "My little toolkit for helping Claude Code and Obsidian work together"
   homepage "https://github.com/ohataken/soul-sacrifice-claude-code-hooks"
-  version "0.0.1"
+  version "0.0.2"
 
   depends_on arch: :arm64
   depends_on :macos
