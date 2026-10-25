@@ -1,4 +1,5 @@
 mod hooks;
+mod note;
 
 fn main() {
     let subcommand = subcommand();
