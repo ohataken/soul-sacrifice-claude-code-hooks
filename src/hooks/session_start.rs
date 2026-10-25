@@ -42,9 +42,26 @@ impl Base {
     fn render(&self) -> String {
         let mut base = String::new();
 
+        base += "filters:\n";
+        base += "  and:\n";
+        base += &format!("    - 'session_id == \"{}\"'\n", self.session_id);
         base += "views:\n";
         base += "  - type: table\n";
         base += "    name: Session\n";
+        base += "    order:\n";
+        base += "      - timestamp\n";
+        base += "      - file.name\n";
+        base += "      - file.size\n";
+        base += "      - file.links\n";
+        base += "      - file.backlinks\n";
+        base += "      - session_id\n";
+        base += "      - hook_event_name\n";
+        base += "      - prompt_id\n";
+        base += "      - reason\n";
+        base += "      - source\n";
+        base += "    sort:\n";
+        base += "      - property: timestamp\n";
+        base += "        direction: ASC\n";
 
         base
     }
